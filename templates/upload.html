@@ -1,0 +1,43 @@
+<!doctype html>
+<meta http-equiv="cache-control" content="no-cache" />
+<meta name="viewport" content="width=device-width" />
+<link href='https://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
+<link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/styles.css') }}">
+<title>Deal With It Meme Generator</title>
+<div class="container">
+<div class="glitch" data-text="DEAL WITH IT">DEAL WITH IT</div>
+<div class="glow">DEAL WITH IT</div>
+</div>
+<div class="scanlines"></div>
+<p class="xoop1">Select an image to upload and display</p>
+<p>
+	{% with messages = get_flashed_messages() %}
+	  {% if messages %}
+		<ul>
+		{% for message in messages %}
+		  <p class="xoop3">{{ message }}</p>
+		{% endfor %}
+		</ul>
+	  {% endif %}
+	{% endwith %}
+</p>
+<div class = "xoop">
+	<img src="static/arrow.png" class="xoop">
+</div>
+{% if filename %}
+	<div class = "xoop2">
+		<img src="{{ url_for('display_image', filename=filename) }}" class = "xoop2">
+	</div>
+	<embed name="MEME"  src="static/music.mp3" hidden="true" autostart="true">
+{% endif %}
+<form method="post" action="/" enctype="multipart/form-data">
+    <dl>
+		<p>
+			<input type="file" name="file" autocomplete="off" required>
+		</p>
+    </dl>
+    <p>
+		<input type="submit" value="Submit">
+	</p>
+	<br><br>
+</form>
