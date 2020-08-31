@@ -17,9 +17,8 @@ def generate_gif(filename):
     # open our image, convert to rgba
     img = Image.open('static/uploads/' + filename).convert('RGBA')
 
-    # two images we'll need, glasses and deal with it text
-    deal = Image.open("assets/deals.png")
-    text = Image.open('assets/text.png')
+    memePicture = Image.open("assets/memePicture.png")
+    memeText = Image.open('assets/memeText.png')
 
     if img.size[0] > max_width:
         scaled_height = int(max_width * img.size[1] / img.size[0])
@@ -54,45 +53,45 @@ def generate_gif(filename):
         rightEyeCenter = rightEye.mean(axis=0).astype("int")
 
         # compute the angle between the eye centroids
-        dY = leftEyeCenter[1] - rightEyeCenter[1]
-        dX = leftEyeCenter[0] - rightEyeCenter[0]
-        angle = np.rad2deg(np.arctan2(dY, dX))
+        angleY = leftEyeCenter[1] - rightEyeCenter[1]
+        angleX = leftEyeCenter[0] - rightEyeCenter[0]
+        angle = np.rad2deg(np.arctan2(angleY, angleX))
 
         # resize glasses to fit face width
-        current_deal = deal.resize((shades_width, int(shades_width * deal.size[1] / deal.size[0])),
+        currentMemePicture = memePicture.resize((shades_width, int(shades_width * memePicture.size[1] / memePicture.size[0])),
                                    resample=Image.LANCZOS)
         # rotate and flip to fit eye centers
-        current_deal = current_deal.rotate(angle, expand=True)
-        current_deal = current_deal.transpose(Image.FLIP_TOP_BOTTOM)
+        currentMemePicture = currentMemePicture.rotate(angle, expand=True)
+        currentMemePicture = currentMemePicture.transpose(Image.FLIP_TOP_BOTTOM)
 
         # add the scaled image to a list, shift the final position to the
         # left of the leftmost eye
-        face['glasses_image'] = current_deal
-        left_eye_x = leftEye[0,0] - shades_width // 4
-        left_eye_y = leftEye[0,1] - shades_width // 6
-        face['final_pos'] = (left_eye_x, left_eye_y)
+        face['glasses_image'] = currentMemePicture
+        leftEyeX = leftEye[0,0] - shades_width // 4
+        leftEyeY = leftEye[0,1] - shades_width // 6
+        face['final_pos'] = (leftEyeX, leftEyeY)
         faces.append(face)
 
     # how long our gif should be
     duration = 4
 
     def make_frame(t):
-        draw_img = img.convert('RGBA') # returns copy of original image
+        finalImg = img.convert('RGBA') # returns copy of original image
 
         if t == 0: # no glasses first image
-            return np.asarray(draw_img)
+            return np.asarray(finalImg)
 
         for face in faces:
             if t <= duration - 2:
-                current_x = int(face['final_pos'][0])
-                current_y = int(face['final_pos'][1] * t / (duration - 2))
-                draw_img.paste(face['glasses_image'], (current_x, current_y) , face['glasses_image'])
+                currentX = int(face['final_pos'][0])
+                currentY = int(face['final_pos'][1] * t / (duration - 2))
+                finalImg.paste(face['glasses_image'], (currentX, currentY) , face['glasses_image'])
             else:
-                draw_img.paste(face['glasses_image'], face['final_pos'], face['glasses_image'])
-                draw_img.paste(text, (75, draw_img.height - 65), text)
+                finalImg.paste(face['glasses_image'], face['final_pos'], face['glasses_image'])
+                finalImg.paste(memeText, (75, finalImg.height - 65), memeText)
 
-        return np.asarray(draw_img)
+        return np.asarray(finalImg)
 
 
-    animation = mpy.VideoClip(make_frame, duration=duration)
+    animation = mpy.VideoClip(make_frame, duration = duration)
     animation.write_gif("static/uploads/downloaded_gif.gif", fps=4)

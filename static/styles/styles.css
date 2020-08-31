@@ -1,156 +1,26 @@
-body{
-  background: rgba(0,0,0,0.9);
-}
-form{
-  position: absolute;
-  top: 50%;
-  left: 20%;
-  margin-top: -100px;
-  margin-left: -250px;
-  width: 500px;
-  height: 250px;
-  border: 4px dashed #fff;
+@import url(https://fonts.googleapis.com/css?family=Signika:700,300,600);
+
+html, body { height: 100%; }
+body { display: flex; justify-content: center; margin:20px 0; text-align:center; background:rgb(2,0,36); overflow:hidden; }
+
+h1 {
+ font-size:5em;
+ font:bold 6.5vw/1.6 'Signika', sans-serif;
+ user-select:none;
 }
 
-.xoop{
-  position: absolute;
-  top: 50%;
-  right: 40%;
-  width: 200px;
-  height: 100px;
-  margin-top: -50px;
-  margin-left: -250px;
+h1 span { display:inline-block; animation:float .2s ease-in-out infinite; }
+ @keyframes float {
+  0%,100%{ transform:none; }
+  33%{ transform:translateY(-1px) rotate(-2deg); }
+  66%{ transform:translateY(1px) rotate(2deg); }
 }
 
-.xoop1{
-  position: absolute;
-  top: 30%;
-  left: 28%;
-  margin-top: -100px;
-  margin-left: -250px;
-}
-
-.xoop3{
-  position: absolute;
-  top: 30%;
-  right: 10%;
-  margin-top: -100px;
-  margin-left: -250px;
-}
-
-.xoop2 img{
-  position: absolute;
-  top: 45%;
-  right: 5%;
-  margin-top: -100px;
-  margin-left: -250px;
-  border: 4px dashed #fff;
-}
-
-p{
-  text-align: center;
-  line-height: 170px;
-  color: #ffffff;
-  font-family: Arial;
-}
-
-form input{
-  margin: 0;
-  color: #fff;
-  background: #16a085;
-  border: none;
-  width: 250px;
-  height: 35px;
-  padding: 5px;
-  margin-top: -20px;
-  margin-left: -4px;
-  border-radius: 4px;
-  text-align: center;
-  border-bottom: 4px solid #117A60;
-  transition: all .2s ease;
-  outline: none;
-}
-form input:hover{
-  background: #149174;
-	color: #0C5645;
-}
-form input:active{
-  border:0;
-}
-
-body {
-  background: black;
-  font-family: "Oswald", sans-serif;
-  font-style: italic;
-}
-
-.container {
-  position: absolute;
-  transform: translate(-50%, -50%);
-  top: 10%;
-  left: 50%;
-  width: 450px
-}
-
-.glitch {
-  color: rgb(223, 191, 191);
-  position: relative;
-  font-size: 4vw;
-  // margin: 70px 200px;
-  animation: glitch 10s 10s 1;
-}
-
-.glitch::before {
-  content: attr(data-text);
-  position: absolute;
-  left: -2px;
-  text-shadow: -5px 0 magenta;
-  background: black;
-  overflow: hidden;
-  top: 0;
-  animation: noise-1 3s linear infinite alternate-reverse, glitch 5s 5.05s infinite;
-}
-
-.glitch::after {
-  content: attr(data-text);
-  position: absolute;
-  left: 2px;
-  text-shadow: -5px 0 lightgreen;
-  background: black;
-  overflow: hidden;
-  top: 0;
-  animation: noise-2 3s linear infinite alternate-reverse, glitch 5s 5s infinite;
-}
-
-@keyframes glitch {
-  1%{
-    transform: rotateX(10deg) skewX(90deg);
-  }
-  2%{
-    transform: rotateX(0deg) skewX(0deg);
-  }
-}
-
-@keyframes noise-1 {
-  $steps: 30;
-  @for $i from 1 through $steps {
-    #{percentage($i*(1/$steps))} {
-      $top: random(100);
-      $bottom: random(101 - $top);
-      clip-path: inset(#{$top}px 0 #{$bottom}px 0);
-    }
-  }
-}
-
-@keyframes noise-2 {
-  $steps: 30;
-  @for $i from 0 through $steps {
-    #{percentage($i*(1/$steps))} {
-      $top: random(100);
-      $bottom: random(101 - $top);
-      clip-path: inset(#{$top}px 0 #{$bottom}px 0);
-    }
-  }
+body:hover span { animation:bounce .6s; }
+@keyframes bounce {
+  0%,100%{ transform:translate(0); }
+  25%{ transform:rotateX(20deg) translateY(2px) rotate(-3deg); }
+  50%{ transform:translateY(-20px) rotate(3deg) scale(1.1);  }
 }
 
 .scanlines {
@@ -176,29 +46,107 @@ body {
   animation: fudge 7s ease-in-out alternate infinite;
 }
 
+span:nth-child(4n) { color:hsl(50, 75%, 55%); text-shadow:1px 1px hsl(50, 75%, 45%), 2px 2px hsl(50, 45%, 45%), 3px 3px hsl(50, 45%, 45%), 4px 4px hsl(50, 75%, 45%); }
+span:nth-child(4n-1) { color:hsl(135, 35%, 55%); text-shadow:1px 1px hsl(135, 35%, 45%), 2px 2px hsl(135, 35%, 45%), 3px 3px hsl(135, 35%, 45%), 4px 4px hsl(135, 35%, 45%); }
+span:nth-child(4n-2) { color:hsl(155, 35%, 60%); text-shadow:1px 1px hsl(155, 25%, 50%), 2px 2px hsl(155, 25%, 50%), 3px 3px hsl(155, 25%, 50%), 4px 4px hsl(140, 25%, 50%); }
+span:nth-child(4n-3) { color:hsl(30, 65%, 60%); text-shadow:1px 1px hsl(30, 45%, 50%), 2px 2px hsl(30, 45%, 50%), 3px 3px hsl(30, 45%, 50%), 4px 4px hsl(30, 45%, 50%); }
 
-@keyframes fudge {
-  from {
-    transform: translate(0px, 0px);
-  }
-  to {
-    transform: translate(0px, 2%);
-  }
-}
+h1 span:nth-child(2){ animation-delay:.05s; }
+h1 span:nth-child(3){ animation-delay:.1s; }
+h1 span:nth-child(4){ animation-delay:.15s; }
+h1 span:nth-child(5){ animation-delay:.2s; }
+h1 span:nth-child(6){ animation-delay:.25s; }
+h1 span:nth-child(7){ animation-delay:.3s; }
+h1 span:nth-child(8){ animation-delay:.35s; }
+h1 span:nth-child(9){ animation-delay:.4s; }
+h1 span:nth-child(10){ animation-delay:.45s; }
+h1 span:nth-child(11){ animation-delay:.5s; }
+h1 span:nth-child(12){ animation-delay:.55s; }
+h1 span:nth-child(13){ animation-delay:.6s; }
+h1 span:nth-child(14){ animation-delay:.65s; }
 
-.glow {
-  @extend .glitch;
-  text-shadow: 0 0 1000px rgb(223, 191, 191);
-  color: transparent;
+form{
   position: absolute;
-  top: 0;
+  top: 50%;
+  left: 20%;
+  margin-top: -100px;
+  margin-left: -250px;
+  width: 500px;
+  height: 250px;
+  border: 4px dashed #fff;
 }
 
-@keyframes glitch-2 {
-  1%{
-    transform: rotateX(10deg) skewX(70deg);
-  }
-  2%{
-    transform: rotateX(0deg) skewX(0deg);
-  }
+form input{
+  position: absolute;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  outline: none;
+  opacity: 0;
+}
+
+.xoop{
+  position: absolute;
+  top: 60%;
+  left: 68%;
+  margin-top: -100px;
+  margin-left: -250px;
+}
+
+.xoop1{
+  position: absolute;
+  top: 30%;
+  left: 28%;
+  width: 100%;
+  max-width: 100%;
+  margin-top: -100px;
+  margin-left: -250px;
+}
+
+.xoop3{
+  position: absolute;
+  top: 30%;
+  right: 15%;
+  margin-top: -100px;
+  margin-left: -250px;
+}
+
+.xoop2 img{
+  position: absolute;
+  top: 50%;
+  right: 5%;
+  margin-top: -100px;
+  margin-left: -250px;
+  border: 4px dashed #fff;
+}
+
+p{
+  text-align: center;
+  line-height: 200px;
+  color: #ffffff;
+  font-family: Arial;
+  font-style: italic;
+}
+
+form button{
+  margin: 0;
+  color: #fff;
+  background: #16a085;
+  border: none;
+  width: 508px;
+  height: 35px;
+  margin-top: -20px;
+  margin-left: -4px;
+  border-radius: 4px;
+  border-bottom: 4px solid #117A60;
+  transition: all .2s ease;
+  outline: none;
+}
+form button:hover{
+  background: #149174;
+	color: #0C5645;
+}
+form button:active{
+  border:0;
 }

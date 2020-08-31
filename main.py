@@ -42,7 +42,7 @@ def upload_image():
 		filename = secure_filename(file.filename)
 		file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
 		#print('upload_image filename: ' + filename)
-		flash('Image successfully uploaded and displayed')
+		flash('Generated GIF')
 		generate_gif(filename)
 		return render_template('upload.html', filename=filename)
 	else:
