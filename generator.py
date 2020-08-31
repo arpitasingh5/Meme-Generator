@@ -18,8 +18,8 @@ def generate_gif(filename):
     img = Image.open('static/uploads/' + filename).convert('RGBA')
 
     # two images we'll need, glasses and deal with it text
-    deal = Image.open("deals.png")
-    text = Image.open('text.png')
+    deal = Image.open("assets/deals.png")
+    text = Image.open('assets/text.png')
 
     if img.size[0] > max_width:
         scaled_height = int(max_width * img.size[1] / img.size[0])

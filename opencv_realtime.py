@@ -31,8 +31,8 @@ def start_stream():
     cv2.setWindowProperty('deal generator', cv2.WND_PROP_FULLSCREEN,
                               cv2.WINDOW_FULLSCREEN)
 
-    deal = Image.open("deals.png")
-    text = Image.open('text.png')
+    deal = Image.open("assets/deals.png")
+    text = Image.open('assets/text.png')
 
     dealing = False
 
