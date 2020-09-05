@@ -6,6 +6,8 @@ This project is an automatic meme generator which takes any static image with fa
 
 This repository also includes a streamlit as well as a flask webapp to create memes
 
+![DEAL WITH IT](https://github.com/arpita505/Meme-Generator/blob/master/static/uploads/downloaded_gif.gif?raw=true)
+
 ## Prerequisites:
 
 Pillow, MoviePy, and NumPy for the Gif from still image generator, and OpenCV and Pillow for the real time DEAL generator.
@@ -32,9 +34,18 @@ To run the streamlit webapp :
     
 To run the flask webapp :
 
-    python3 app.py
+    python3 main.py
   
+## Streamlit webapp
+
+<img src="https://github.com/arpita505/Meme-Generator/blob/master/readme_images/webapp2.png" width="800"> 
  
+## Flask webapp
+
+![DEAL WITH IT](https://github.com/arpita505/Meme-Generator/blob/master/readme_images/flaskgif.gif?raw=true)
+
+*Also added music effect in webapp on preview of meme (https://github.com/arpita505/Meme-Generator/blob/master/readme_images/flaskApp.mov)* 
+
 Building a meme generator using OpenCV can teach us a number of valuable techniques used in practice, including:
 
   - How to perform deep learning-based face detection.
