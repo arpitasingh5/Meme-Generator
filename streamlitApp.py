@@ -4,9 +4,10 @@ from PIL import Image
 import argparse
 import os
 from werkzeug.utils import secure_filename
-import moviepy.editor as mpy
 from imutils import face_utils
 import numpy as np
+import moviepy.editor as mpy
+import base64
 
 def generate_gif():
     global img
