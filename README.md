@@ -63,3 +63,5 @@ In order to build our meme generator, we leveraged computer vision and deep lear
 - Extracting regions of the face (in this case, the eyes)
 - Computing the angle between the eyes, a requirement for face alignment
 - Generating transparent overlays via alpha blending 
+
+Inspired from https://www.makeartwithpython.com/
