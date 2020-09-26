@@ -4,7 +4,7 @@ You all must have seen/heard of the infamous Deal With It meme!
 
 This project is an automatic meme generator which takes any static image with faces as our input and outputs animated GIFs. It is written in python and powered through OpenCV and DLib.
 
-This repository also includes a streamlit as well as a flask webapp to create memes
+This repository also includes a streamlit as well as a flask webapp to create memes.
 
 ![DEAL WITH IT](https://github.com/arpita505/Meme-Generator/blob/master/static/uploads/downloaded_gif.gif?raw=true)
 
