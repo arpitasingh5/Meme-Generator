@@ -1,6 +1,6 @@
 # Meme-Generator
 
-You all must have seen/heard of the infamous Deal With It meme!
+You all must have seen/heard of the infamous Deal With It meme!!
 
 This project is an automatic meme generator which takes any static image with faces as our input and outputs animated GIFs. It is written in python and powered through OpenCV and DLib.
 
